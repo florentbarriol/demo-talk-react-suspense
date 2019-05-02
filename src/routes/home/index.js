@@ -5,6 +5,7 @@ import { reducer, initialState } from './reducer';
 import { ResultBox } from './components/resultBox.component';
 import { Filters } from './components/filters.component';
 import Axios from 'axios';
+import { ErrorBoundary } from '../../components/errorBoundary.component';
 
 export const Home = () => {
   const [data, setData] = useState([]);
@@ -29,8 +30,8 @@ export const Home = () => {
     <>
       <Filters dispatch={dispatch} state={state} loading={loading} />
       <Grid gap="xsmall" columns="small" rows="small">
-        {data.map(block => (
-          <ResultBox key={block.id} {...block} />
+        {data.map((block, index) => (
+          <ResultBox key={block.id} {...block} index={index} />
         ))}
       </Grid>
     </>
