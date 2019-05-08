@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.18.0",
     "grommet": "^2.6.6",
     "grommet-icons": "^4.2.0",
     "query-string": "^6.5.0",

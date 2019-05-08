@@ -15,7 +15,11 @@ const MIME_TYPES_OPTIONS = buildOptions(MIME_TYPES);
 
 const selectConfig = { labelKey: 'key', valueKey: 'value' };
 
-export const Filters = ({ state, dispatch, loading }) => {
+export const Filters = ({
+  filters: { mime_types, order, breed_id },
+  dispatch,
+  loading
+}) => {
   const [breedsQuery, setBreedsQuery] = useState(null);
   const [breeds, setBreeds] = useState([]);
 
@@ -45,7 +49,7 @@ export const Filters = ({ state, dispatch, loading }) => {
           {...selectConfig}
           id="order"
           options={ORDERS_OPTIONS}
-          value={findCurrentValue(state.order, ORDERS_OPTIONS)}
+          value={findCurrentValue(order, ORDERS_OPTIONS)}
           disabled={loading}
           onChange={({ option }) =>
             dispatch({
@@ -61,7 +65,7 @@ export const Filters = ({ state, dispatch, loading }) => {
           {...selectConfig}
           id="type"
           options={MIME_TYPES_OPTIONS}
-          value={findCurrentValue(state['mime_types'], MIME_TYPES_OPTIONS)}
+          value={findCurrentValue(mime_types, MIME_TYPES_OPTIONS)}
           disabled={loading}
           onChange={({ option }) =>
             dispatch({
@@ -79,7 +83,7 @@ export const Filters = ({ state, dispatch, loading }) => {
           labelKey="name"
           options={breedsFilterByName}
           value={findCurrentValue(
-            state['breed_id'],
+            breed_id,
             breedsFilterByName,
             (option, value) => option.id === value
           )}

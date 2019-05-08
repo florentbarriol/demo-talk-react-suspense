@@ -1,16 +1,19 @@
 import React from 'react';
-import { Box, Image } from 'grommet';
+import { Link } from 'react-router-dom';
+import { Image, Box } from 'grommet';
 import queryString from 'query-string';
 
-export const ResultBox = ({ index, url }) => {
+export const ResultBox = ({ index, id, url }) => {
   const params = queryString.parse(window.location.search);
   if (Object.keys(params).includes('error') && index === 2) {
     throw new Error('My awesome exception');
   }
 
   return (
-    <Box>
-      <Image fit="cover" src={url} />
-    </Box>
+    <Link to={`/preview/${id}`}>
+      <Box fill>
+        <Image fit="cover" src={url} />
+      </Box>
+    </Link>
   );
 };
