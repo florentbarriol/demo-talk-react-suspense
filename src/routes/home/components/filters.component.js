@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Select, FormField } from 'grommet';
-import {
-  ORDERS,
-  MIME_TYPES,
-  BREEDS_URL,
-  getAuthenticationHeader
-} from '../../../api';
+import { ORDERS, MIME_TYPES, BREEDS_URL, fetchAPI } from '../../../api';
 import { UPDATE_FILTERS } from '../reducer';
 import { filterBreedsByName, buildOptions, findCurrentValue } from '../utils';
-import Axios from 'axios';
 
 const ORDERS_OPTIONS = buildOptions(ORDERS);
 const MIME_TYPES_OPTIONS = buildOptions(MIME_TYPES);
@@ -27,10 +21,8 @@ export const Filters = ({
 
   useEffect(() => {
     async function fetchBreeds() {
-      const result = await Axios.get(BREEDS_URL, {
-        headers: getAuthenticationHeader()
-      });
-      setBreeds(result.data);
+      const data = await fetchAPI(BREEDS_URL);
+      setBreeds(data);
     }
 
     fetchBreeds();
