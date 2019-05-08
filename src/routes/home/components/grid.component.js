@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// import { unstable_createResource } from 'react-cache';
 import { Grid as GridWrapper } from 'grommet';
 import queryString from 'query-string';
 import { IMAGES_SEARCH_URL, fetchAPI } from '../../../api';

@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Box, Heading, Button } from 'grommet';
 import { FormPreviousLink } from 'grommet-icons';
 import { Link } from 'react-router-dom';
 import { ImagePreview } from './components/ImagePreview.component';
+// import { Loading } from '../../components/loading.component';
 
 const Preview = ({ match }) => {
   const { params } = match;
 
   return (
-    <>
+    <main>
       <Box
         margin="medium"
         direction="row"
@@ -21,8 +22,10 @@ const Preview = ({ match }) => {
           <Button icon={<FormPreviousLink size="medium" color="brand" />} />
         </Link>
       </Box>
-      <ImagePreview id={params.id} />
-    </>
+      <>
+        <ImagePreview id={params.id} />
+      </>
+    </main>
   );
 };
 
