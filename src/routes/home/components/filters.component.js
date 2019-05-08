@@ -11,18 +11,20 @@ const selectConfig = { labelKey: 'key', valueKey: 'value' };
 
 export const Filters = ({
   filters: { mime_types, order, breed_id },
-  dispatch,
-  loading
+  dispatch
 }) => {
   const [breedsQuery, setBreedsQuery] = useState(null);
   const [breeds, setBreeds] = useState([]);
+  const [loading, setLoading] = useState([]);
 
   const breedsFilterByName = filterBreedsByName(breeds, breedsQuery);
 
   useEffect(() => {
     async function fetchBreeds() {
+      setLoading(true);
       const data = await fetchAPI(BREEDS_URL);
       setBreeds(data);
+      setLoading(false);
     }
 
     fetchBreeds();
@@ -42,7 +44,6 @@ export const Filters = ({
           id="order"
           options={ORDERS_OPTIONS}
           value={findCurrentValue(order, ORDERS_OPTIONS)}
-          disabled={loading}
           onChange={({ option }) =>
             dispatch({
               type: UPDATE_FILTERS,
@@ -58,7 +59,6 @@ export const Filters = ({
           id="type"
           options={MIME_TYPES_OPTIONS}
           value={findCurrentValue(mime_types, MIME_TYPES_OPTIONS)}
-          disabled={loading}
           onChange={({ option }) =>
             dispatch({
               type: UPDATE_FILTERS,
@@ -73,13 +73,13 @@ export const Filters = ({
           id="breed"
           valueKey="id"
           labelKey="name"
+          disabled={loading}
           options={breedsFilterByName}
           value={findCurrentValue(
             breed_id,
             breedsFilterByName,
             (option, value) => option.id === value
           )}
-          disabled={loading}
           placeholder="Choose a breed"
           onSearch={query => setBreedsQuery(query)}
           searchPlaceholder="Search a breed"
