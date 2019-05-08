@@ -6,6 +6,7 @@ import { reducer, initialState } from './reducer';
 import { ResultBox } from './components/resultBox.component';
 import { Filters } from './components/filters.component';
 import { Loading } from '../../components/loading.component';
+// import { ErrorBoundary } from '../../components/errorBoundary.component';
 
 const Home = () => {
   const [data, setData] = useState([]);
