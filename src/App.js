@@ -7,7 +7,7 @@ import Home from './routes/home';
 import Preview from './routes/preview';
 import { Header } from './components/header.component';
 import { theme } from './theme';
-// import { Loading } from '../../components/loading.component';
+// import { LoadingSuspense } from '../../components/loadingSuspense.component';
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
@@ -23,8 +23,8 @@ const App = () => (
   <Grommet theme={theme}>
     <GlobalStyle />
     <BrowserRouter>
+      <Header />
       <>
-        <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/preview/:id" component={Preview} />
