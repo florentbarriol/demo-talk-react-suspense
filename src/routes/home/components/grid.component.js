@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { unstable_createResource } from 'react-cache';
 import { Grid as GridWrapper } from 'grommet';
 import queryString from 'query-string';
 import { IMAGES_SEARCH_URL, fetchAPI } from '../../../api';
 import { ResultBox } from './resultBox.component';
-import { Loading } from '../../../components/loading.component';
 
-const APIResource = unstable_createResource(filters =>
-  fetchAPI(`${IMAGES_SEARCH_URL}?${queryString.stringify(filters)}`)
+const APIResource = unstable_createResource(
+  filters => fetchAPI(`${IMAGES_SEARCH_URL}?${queryString.stringify(filters)}`),
+  input => (input.breed_id ? input.breed_id : -1)
 );
 
 export const Grid = ({ filters }) => {
