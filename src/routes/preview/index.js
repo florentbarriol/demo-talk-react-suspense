@@ -3,7 +3,7 @@ import { Box, Heading, Button } from 'grommet';
 import { FormPreviousLink } from 'grommet-icons';
 import { Link } from 'react-router-dom';
 import { ImagePreview } from './components/ImagePreview.component';
-// import { Loading } from '../../components/loading.component';
+import { LoadingSuspense as Loading } from '../../components/loadingSuspense.component';
 
 const Preview = ({ match }) => {
   const { params } = match;
