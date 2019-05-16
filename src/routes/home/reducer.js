@@ -4,7 +4,7 @@ export const initialState = {
   limit: 20,
   breed_id: '',
   page: 0,
-  order: ORDERS.RANDOM,
+  order: ORDERS.ASC,
   mime_types: MIME_TYPES.ALL,
   size: SIZES.THUMBNAIL
 };
