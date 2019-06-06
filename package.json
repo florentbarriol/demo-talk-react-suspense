@@ -1,7 +1,15 @@
 {
   "name": "demo-talk-react-suspense",
-  "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Florent Barriol",
+    "email": "florent.barriol@gmail.com",
+    "url": "http://florentbarriol.com"
+  },
+  "bugs": "https://github.com/florentbarriol/demo-talk-react-suspense/issues",
+  "homepage": "https://github.com/florentbarriol/demo-talk-react-suspense",
+  "description": "A demo project to illustrate my talk about React.Suspense and react-cache",
+  "version": "1.0.0",
   "dependencies": {
     "grommet": "^2.6.6",
     "grommet-icons": "^4.2.0",
