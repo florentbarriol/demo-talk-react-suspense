@@ -4,6 +4,8 @@ import { Image, Box } from 'grommet';
 import queryString from 'query-string';
 
 export const ResultBox = ({ index, id, url }) => {
+  // Code to demonstrate the errorBoundary component
+  // simply add `?error` in the url to see the errorBoundary component works
   const params = queryString.parse(window.location.search);
   if (Object.keys(params).includes('error') && index === 2) {
     throw new Error('Oups, error !');

@@ -7,7 +7,6 @@ import Home from './routes/home';
 import Preview from './routes/preview';
 import { Header } from './components/header.component';
 import { theme } from './theme';
-// import { Loading } from '../../components/loading.component';
 
 const GlobalStyle = createGlobalStyle`
   ${reset};

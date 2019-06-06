@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { unstable_createResource } from 'react-cache';
 import { Select, FormField } from 'grommet';
 import { BREEDS_URL, fetchAPI } from '../../../api';
 import { UPDATE_FILTERS } from '../reducer';

@@ -1,10 +1,9 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Box, Select, FormField } from 'grommet';
 import { ORDERS, MIME_TYPES } from '../../../api';
 import { UPDATE_FILTERS } from '../reducer';
 import { buildOptions, findCurrentValue } from '../utils';
 import { BreedsSelect } from './breedsSelect.component';
-// import { Loading } from '../../../components/loading.component';
 
 const ORDERS_OPTIONS = buildOptions(ORDERS);
 const MIME_TYPES_OPTIONS = buildOptions(MIME_TYPES);
