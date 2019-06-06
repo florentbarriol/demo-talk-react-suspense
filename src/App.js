@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reset from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
@@ -7,6 +7,7 @@ import Home from './routes/home';
 import Preview from './routes/preview';
 import { Header } from './components/header.component';
 import { theme } from './theme';
+import { ErrorBoundary } from './components/errorBoundary.component';
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
@@ -22,13 +23,13 @@ const App = () => (
   <Grommet theme={theme}>
     <GlobalStyle />
     <BrowserRouter>
-      <>
+      <ErrorBoundary>
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/preview/:id" component={Preview} />
         </Switch>
-      </>
+      </ErrorBoundary>
     </BrowserRouter>
   </Grommet>
 );

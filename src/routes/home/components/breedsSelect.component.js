@@ -1,26 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { unstable_createResource as createResrouce } from 'react-cache';
 import { Select, FormField } from 'grommet';
 import { BREEDS_URL, fetchAPI } from '../../../api';
 import { UPDATE_FILTERS } from '../reducer';
 import { findCurrentValue } from '../utils';
-import { Loading } from '../../../components/loading.component';
+
+const APIResource = createResrouce(() => fetchAPI(BREEDS_URL));
 
 export const BreedsSelect = ({ breedId, dispatch }) => {
-  const [breeds, setBreeds] = useState([]);
-  const [loading, setLoading] = useState([]);
-
-  useEffect(() => {
-    async function fetchBreeds() {
-      setLoading(true);
-      const data = await fetchAPI(BREEDS_URL);
-      setBreeds(data);
-      setLoading(false);
-    }
-
-    fetchBreeds();
-  }, []);
-
-  if (loading) return <Loading />;
+  const breeds = APIResource.read();
 
   return (
     <FormField htmlFor="breed" label="Breed">
@@ -28,7 +16,6 @@ export const BreedsSelect = ({ breedId, dispatch }) => {
         id="breed"
         valueKey="id"
         labelKey="name"
-        disabled={loading}
         options={breeds}
         value={findCurrentValue(
           breedId,

@@ -3,6 +3,7 @@ import { Box, Heading, Button } from 'grommet';
 import { FormPreviousLink } from 'grommet-icons';
 import { Link } from 'react-router-dom';
 import { ImagePreview } from './components/ImagePreview.component';
+import { LoadingSuspense } from '../../components/suspense.component';
 
 const Preview = ({ match }) => {
   const { params } = match;
@@ -21,7 +22,9 @@ const Preview = ({ match }) => {
           <Button icon={<FormPreviousLink size="medium" color="brand" />} />
         </Link>
       </Box>
-      <ImagePreview id={params.id} />
+      <Suspense fallback={<LoadingSuspense />}>
+        <ImagePreview id={params.id} />
+      </Suspense>
     </main>
   );
 };
