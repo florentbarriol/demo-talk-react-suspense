@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, Suspense } from 'react';
 import { reducer, initialState } from './reducer';
 import { Filters } from './components/filters.component';
 import { Grid } from './components/grid.component';
