@@ -22,9 +22,9 @@ const Preview = ({ match }) => {
           <Button icon={<FormPreviousLink size="medium" color="brand" />} />
         </Link>
       </Box>
-      <>
+      <Suspense fallback={<Loading />}>
         <ImagePreview id={params.id} />
-      </>
+      </Suspense>
     </main>
   );
 };
